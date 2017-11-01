@@ -8,7 +8,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
-import { DatePicker } from 'antd'
+import Router from './routes'
 
 const Button = styled.button`
   border-radius: 3px;
@@ -19,13 +19,16 @@ const Button = styled.button`
   cursor: pointer;
   border: 2px solid palevioletred;
 `
-const Wrapper = styled.div``
 
-const Component = (
+const Wrapper = styled.div`
+  padding: 10px;
+`
+
+const App = () => (
   <Wrapper>
-      <DatePicker />
-      <Button>hello, world. nice to meet you</Button>
+    <Router />
+    <Button>Nice to met you</Button>
   </Wrapper>
 )
 
-ReactDOM.render(Component, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

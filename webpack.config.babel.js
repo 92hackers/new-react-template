@@ -7,14 +7,30 @@
 
 import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
+import webpack from 'webpack'
 
 const absolute_path_of = path => resolve(__dirname, path)
 
+const dependencies = [
+  'babel-polyfill',
+  'react',
+  'react-dom',
+  'prop-types',
+  'styled-components',
+  'react-loadable',
+]
+
 const config = {
-  entry: ['babel-polyfill', './src/app'],
+  entry: {
+    vendor: dependencies,
+    app: './src'
+  },
   target: 'web',
   output: {
     path: absolute_path_of('dist'),
+    publicPath: '/',
     chunkFilename: '[name].[chunkhash].chunk.js',
     filename: '[name].[hash].bundle.js',
   },
@@ -32,13 +48,15 @@ const config = {
     rules: [
       {
         test: /\.js$/,
+        include: absolute_path_of('src'),
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'stage-0', 'react'],
             cacheDirectory: true,
+            presets: [['env', { modules: false }], 'stage-0', 'react'],
             plugins: [
+              'lodash',
               ['import', { libraryName: 'antd', style: 'css' }],
             ],
           },
@@ -46,17 +64,33 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       },
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(
+        process.env.NODE_ENV || 'development'
+      )
+    }),
+    new ExtractTextPlugin('[name].[contenthash].css', {
+      allChunks: true
+    }),
+    new LodashModuleReplacementPlugin,
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+    }),
     new HtmlWebpackPlugin({
       minify: {
         collapseWhitespace: true,
         removeComments: true,
       },
-      template: './src/template.html',
+      template: '!!html-loader!./src/template.html'
     })
   ]
 }

@@ -1,14 +1,21 @@
 import config from './webpack.config.babel'
 
-config.devtool = 'source-map'
+config.output.pathinfo = true
 
 config.devServer = {
   historyApiFallback: true,
-  contentBase: config.output.path,
+  contentBase: false,
   compress: true,
-//   hotOnly: true,
-  open: true,
-  port: 9000
+  // open: true,
+  port: 9000,
+  stats: {
+    assets: true,
+    version: false,
+    hash: false,
+    timings: false,
+    chunks: false,
+    chunkModules: true
+  }
 }
 
 export default config
