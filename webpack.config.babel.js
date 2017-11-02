@@ -16,10 +16,10 @@ const absolute_path_of = path => resolve(__dirname, path)
 const dependencies = [
   'babel-polyfill',
   'react',
-  'react-dom',
   'prop-types',
   'styled-components',
   'react-loadable',
+  'redux-saga',
 ]
 
 const config = {
@@ -36,7 +36,8 @@ const config = {
   },
   resolve: {
     alias: {
-      components: absolute_path_of('src/components')
+      components: absolute_path_of('src/components'),
+      modules: absolute_path_of('src/modules'),
     },
     modules: [
       'node_modules',
@@ -73,7 +74,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
+      ENV: JSON.stringify(
         process.env.NODE_ENV || 'development'
       )
     }),

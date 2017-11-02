@@ -6,7 +6,7 @@
 'use strict'
 
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from 'components/Loading'
 import ScrollToTop from 'components/ScrollToTop'
@@ -36,9 +36,11 @@ const MainRouter = () => (
           <li><Link to="/topics">Topics</Link></li>
         </ul>
         <hr />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={TopicList} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/topics" component={TopicList} />
+        </Switch>
       </div>
     </ScrollToTop>
   </Router>

@@ -8,14 +8,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, Route } from 'react-router-dom'
-import Topic from './Topic'
+import Loadable from 'react-loadable'
+import Loading from 'components/Loading'
+
+const Topic = Loadable({
+  loader: () => import('./Topic'),
+  loading: Loading,
+})
 
 const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/rendering`}>
+        <Link to={`${match.url}/renderj`}>
           Rendering with React
         </Link>
       </li>
@@ -30,7 +36,6 @@ const Topics = ({ match }) => (
         </Link>
       </li>
     </ul>
-
     <Route path={`${match.path}/:topicId`} component={Topic}/>
     <Route exact path={match.path} render={() => (
       <h3>Please select a topic.</h3>

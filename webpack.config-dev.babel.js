@@ -7,6 +7,7 @@ config.devServer = {
   contentBase: false,
   compress: true,
   // open: true,
+  hot: true,
   port: 9000,
   stats: {
     assets: true,
