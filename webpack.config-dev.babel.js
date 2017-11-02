@@ -10,10 +10,10 @@ config.devServer = {
   hot: true,
   port: 9000,
   stats: {
-    assets: true,
-    version: false,
-    hash: false,
-    timings: false,
+    //assets: true,
+    //version: false,
+    hash: true,
+    //timings: false,
     chunks: false,
     chunkModules: true
   }
