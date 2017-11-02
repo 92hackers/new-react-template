@@ -32,27 +32,14 @@ const store = createStore(
 // run sagas
 sagaMiddleware.run(mainSaga)
 
-const Button = styled.button`
-  border-radius: 3px;
-  padding: 0.25em 1em;
-  margin: 0 1em;
-  background: transparent;
-  color: palevioletred;
-  cursor: pointer;
-  border: 2px solid palevioletred;
-`
-
 const Wrapper = styled.div`
   padding: 10px;
 `
-
-const increment = () => store.dispatch({ type: 'INCREMENT_ASYNC' })
 
 const App = () => (
   <Provider store={store}>
     <Wrapper>
       <Router />
-      <Button onClick={increment}>Increment One</Button>
       <Counter />
     </Wrapper>
   </Provider>

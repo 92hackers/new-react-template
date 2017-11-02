@@ -7,7 +7,7 @@
 
 // import { delay } from 'redux-saga'
 import { put, takeEvery } from 'redux-saga/effects'
-import { INCREMENT } from './mutations'
+import { INCREMENT, INCREMENT_ASYNC } from './mutations'
 
 // worker saga
 export function * increment() {
@@ -17,5 +17,5 @@ export function * increment() {
 
 // watcher saga
 export function * watchIncrement() {
-  yield takeEvery('INCREMENT_ASYNC', increment)
+  yield takeEvery(INCREMENT_ASYNC, increment)
 }
