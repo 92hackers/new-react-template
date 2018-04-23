@@ -1,6 +1,6 @@
 /**
- * @copyright Betanovo.ltd 2017 - present
- * @author chenyuan <chenyuan@betanovo.com>
+ * @copyright Breword
+ * @author chenyuan
  */
 
 'use strict'
@@ -22,6 +22,7 @@ const dependencies = [
   'redux-saga',
 ]
 
+// TODO: Make vendor bundle chunk hash, not bundle hash.
 const config = {
   entry: {
     vendor: dependencies,

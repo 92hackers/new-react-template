@@ -1,13 +1,14 @@
 /**
- * @copyright Betanovo.ltd 2017 - present
- * @author chenyuan <chenyuan@betanovo.com>
+ * @copyright Breword
+ * @author chenyuan
  */
 
 'use strict'
 
-const INCREMENT = Symbol()
-const DECREMENT = Symbol()
-const INCREMENT_ASYNC = Symbol()
+const INCREMENT = 'INCREMENT'
+const INCREMENT_ASYNC = 'INCREMENT_ASYNC'
+
+const DECREMENT = 'DECREMENT'
 
 export {
   INCREMENT,
