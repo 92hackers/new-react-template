@@ -1,8 +1,8 @@
 {
-  "name": "betanovo-copy-follow-h5",
+  "name": "Breword-translators-frontend",
   "version": "0.0.1",
-  "description": "Betanovo copy follow h5 app",
-  "author": "chenyuan@betanovo.com",
+  "description": "Breword translators frontend project",
+  "author": "chenyuan@gmail.com",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
