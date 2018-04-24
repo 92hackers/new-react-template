@@ -52,8 +52,10 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
-    "antd": "^2.13.8",
+    "antd": "^3.4.3",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "history": "^4.7.2",
     "immutable": "^3.8.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",

@@ -21,11 +21,6 @@ const About = Loadable({
   loading: Loading,
 })
 
-const TopicList = Loadable({
-  loader: () => import('components/TopicList'),
-  loading: Loading,
-})
-
 const MainRouter = () => (
   <Router>
     <ScrollToTop>
@@ -39,7 +34,6 @@ const MainRouter = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/topics" component={TopicList} />
         </Switch>
       </div>
     </ScrollToTop>

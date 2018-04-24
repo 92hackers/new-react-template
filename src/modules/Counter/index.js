@@ -6,6 +6,7 @@
 'use strict'
 
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Component from './component'
 import { INCREMENT_ASYNC } from './mutations'
 
@@ -19,4 +20,4 @@ const mapDispatchToProps = dispatch => ({
 
 const Counter = connect(mapStateToProps, mapDispatchToProps)(Component)
 
-export default Counter
+export default withRouter(Counter)

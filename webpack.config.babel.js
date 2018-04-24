@@ -84,6 +84,7 @@ const config = {
     }),
     new LodashModuleReplacementPlugin,
     new webpack.optimize.CommonsChunkPlugin({
+      children: true,
       name: 'vendor',
       minChunks: Infinity,
     }),
