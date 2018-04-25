@@ -1,8 +1,8 @@
 /**
  * Config Appliction HTTP, to request apis from services
  * 
- * @copyright Betanovo.ltd 2017 - present
- * @author chenyuan <chenyuan@betanovo.com>
+ * @copyright Breword
+ * @author chenyuan <chenyuan@gmail.com>
  */
 
 'use strict'
@@ -24,8 +24,11 @@ const client = axios.create({
 })
 
 const request = async (url, method = 'GET', body, headers) => {
-  const res = await client.request({ url, method, data: body, headers })
-    .catch((err) => err)
+  const requestParams = { url, method, headers }
+  const dataKey = method === 'GET' ? 'params' : 'data'
+  requestParams[dataKey] = body
+
+  const res = await client.request(requestParams).catch((err) => err)
 
   // error cached, such as request timeout.
   if (!res.status) {
